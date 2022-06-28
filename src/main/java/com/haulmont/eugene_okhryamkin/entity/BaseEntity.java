@@ -13,6 +13,6 @@ public class BaseEntity {
     @JmixGeneratedValue
     @Column(name="ID", nullable = false)
     @Id
-    private UUID id;
+    protected UUID id;
 
 }
