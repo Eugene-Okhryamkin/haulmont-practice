@@ -1,6 +1,5 @@
 package com.haulmont.eugene_okhryamkin.security;
 
-import com.haulmont.eugene_okhryamkin.entity.User;
 import io.jmix.securitydata.user.AbstractDatabaseUserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;

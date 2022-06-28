@@ -1,6 +1,5 @@
 package com.haulmont.eugene_okhryamkin.screen.user;
 
-import com.haulmont.eugene_okhryamkin.entity.User;
 import io.jmix.core.EntityStates;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.component.ComboBox;

@@ -1,6 +1,5 @@
 package com.haulmont.eugene_okhryamkin.screen.user;
 
-import com.haulmont.eugene_okhryamkin.entity.User;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 
