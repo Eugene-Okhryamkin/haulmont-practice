@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application" caption="msg://com.haulmont.okhryamkin.rentservice/menu.application" insertBefore="administration">
+        <item screen="User.browse" caption="msg://com.haulmont.okhryamkin.rentservice.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="Client.browse"
+              caption="msg://com.haulmont.okhryamkin.rentservice.screen.client/clientBrowse.menu"/>
+        <item screen="Outlet.browse"
+              caption="msg://com.haulmont.okhryamkin.rentservice.screen.outlet/outletBrowse.menu"/>
+        <item screen="Contract.browse"
+              caption="msg://com.haulmont.okhryamkin.rentservice.screen.contract/contractBrowse.menu"/>
+    </menu>
+
+</menu-config>

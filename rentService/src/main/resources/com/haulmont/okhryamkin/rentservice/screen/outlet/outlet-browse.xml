@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://outletBrowse.caption"
+        focusComponent="outletsTable">
+    <data readOnly="true">
+        <collection id="outletsDc"
+                    class="com.haulmont.okhryamkin.rentservice.entity.Outlet">
+            <fetchPlan extends="_base"/>
+            <loader id="outletsDl">
+                <query>
+                    <![CDATA[select e from Outlet e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="outletsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="outletsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="outletsTable"
+                    width="100%"
+                    dataContainer="outletsDc">
+            <actions>
+                <action id="add" type="add"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="outletNumber"
+                        caption="&#1053;&#1086;&#1084;&#1077;&#1088; &#1090;&#1086;&#1088;&#1075;&#1086;&#1074;&#1086;&#1081; &#1090;&#1086;&#1095;&#1082;&#1080;"/>
+                <column id="floor" caption="&#1069;&#1090;&#1072;&#1078;"/>
+                <column id="area" caption="&#1055;&#1083;&#1086;&#1097;&#1072;&#1076;&#1100;"/>
+                <column id="cost" caption="&#1062;&#1077;&#1085;&#1072;"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="outletsTable.create"
+                        caption="&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100; &#1090;&#1086;&#1088;&#1075;&#1086;&#1074;&#1091;&#1102; &#1090;&#1086;&#1095;&#1082;&#1091;"/>
+                <button id="editBtn" action="outletsTable.edit"
+                        caption="&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                <button id="refreshBtn" action="outletsTable.refresh"
+                        caption="&#1054;&#1073;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;"/>
+                <button id="removeBtn" action="outletsTable.remove"
+                        caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

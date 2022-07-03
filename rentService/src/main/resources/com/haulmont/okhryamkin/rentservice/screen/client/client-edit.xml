@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://clientEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="clientDc"
+                  class="com.haulmont.okhryamkin.rentservice.entity.Client">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="clientDc">
+            <column width="350px">
+                <textField id="companyNameField" property="companyName"
+                           caption="&#1053;&#1072;&#1079;&#1074;&#1072;&#1085;&#1080;&#1077;"/>
+                <textField id="addressField" property="address" caption="&#1040;&#1076;&#1088;&#1077;&#1089;"/>
+                <textField id="ownerNameField" property="ownerName" caption="&#1048;&#1084;&#1103; "/>
+                <textField id="ownerMiddlenameField" property="ownerMiddlename"
+                           caption="&#1054;&#1090;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;"/>
+                <textField id="ownerSurnameField" property="ownerSurname"
+                           caption="&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;"/>
+                <textField id="phoneNumberField" property="phoneNumber"
+                           caption="&#1053;&#1086;&#1084;&#1077;&#1088; &#1090;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;&#1072;"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"
+                    caption="&#1055;&#1086;&#1076;&#1090;&#1074;&#1077;&#1088;&#1076;&#1080;&#1090;&#1100;"/>
+            <button id="closeBtn" action="windowClose" caption="&#1054;&#1090;&#1084;&#1077;&#1085;&#1072;"/>
+        </hbox>
+    </layout>
+</window>

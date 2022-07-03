@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://contractBrowse.caption"
+        focusComponent="contractsTable">
+    <data readOnly="true">
+        <collection id="contractsDc"
+                    class="com.haulmont.okhryamkin.rentservice.entity.Contract">
+            <fetchPlan extends="_base">
+                <property name="client" fetchPlan="_base"/>
+                <property name="outlet" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="contractsDl">
+                <query>
+                    <![CDATA[select e from Contract e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="contractsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="contractsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="contractsTable"
+                    width="100%"
+                    dataContainer="contractsDc">
+            <actions>
+                <action id="add" type="add"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="client" caption="&#1050;&#1086;&#1084;&#1087;&#1072;&#1085;&#1080;&#1103;"/>
+                <column id="dateOfStart"
+                        caption="&#1044;&#1072;&#1090;&#1072; &#1085;&#1072;&#1095;&#1072;&#1083;&#1072; &#1072;&#1088;&#1077;&#1085;&#1076;&#1099;"/>
+                <column id="dateOfEnd"
+                        caption="&#1044;&#1072;&#1090;&#1072; &#1086;&#1082;&#1086;&#1085;&#1095;&#1072;&#1085;&#1080;&#1103; &#1072;&#1088;&#1077;&#1085;&#1076;&#1099;"/>
+                <column id="outlet"
+                        caption="&#1058;&#1086;&#1088;&#1075;&#1086;&#1074;&#1072;&#1103; &#1090;&#1086;&#1095;&#1082;&#1072;"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="contractsTable.create"
+                        caption="&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100; &#1076;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088;"/>
+                <button id="editBtn" action="contractsTable.edit"
+                        caption="&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                <button id="refreshBtn" action="contractsTable.refresh"
+                        caption="&#1054;&#1073;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;"/>
+                <button id="removeBtn" action="contractsTable.remove"
+                        caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

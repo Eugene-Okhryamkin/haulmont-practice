@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://clientBrowse.caption"
+        focusComponent="clientsTable">
+    <data readOnly="true">
+        <collection id="clientsDc"
+                    class="com.haulmont.okhryamkin.rentservice.entity.Client">
+            <fetchPlan extends="_base"/>
+            <loader id="clientsDl">
+                <query>
+                    <![CDATA[select e from Client e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clientsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="clientsDl" caption="&#1055;&#1086;&#1080;&#1089;&#1082;">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clientsTable"
+                    width="100%"
+                    dataContainer="clientsDc">
+            <actions>
+                <action id="add" type="add"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="companyName" caption="&#1050;&#1086;&#1084;&#1087;&#1072;&#1085;&#1080;&#1103;"/>
+                <column id="address" caption="&#1040;&#1076;&#1088;&#1077;&#1089;"/>
+                <column id="ownerName" caption="&#1048;&#1084;&#1103;"/>
+                <column id="ownerMiddlename" caption="&#1054;&#1090;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;"/>
+                <column id="ownerSurname" caption="&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;"/>
+                <column id="phoneNumber"
+                        caption="&#1053;&#1086;&#1084;&#1077;&#1088; &#1090;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;&#1072;"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="clientsTable.create"
+                        caption="&#1057;&#1086;&#1079;&#1076;&#1072;&#1090;&#1100; &#1082;&#1083;&#1080;&#1077;&#1085;&#1090;&#1072;"/>
+                <button id="editBtn" action="clientsTable.edit"
+                        caption="&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                <button id="refreshBtn" action="clientsTable.refresh"
+                        caption="&#1054;&#1073;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;"/>
+                <button id="removeBtn" action="clientsTable.remove"
+                        caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100; &#1082;&#1083;&#1080;&#1077;&#1085;&#1090;&#1072;"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

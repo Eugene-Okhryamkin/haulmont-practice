@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://outletEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="outletDc"
+                  class="com.haulmont.okhryamkin.rentservice.entity.Outlet">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="outletDc">
+            <column width="350px">
+                <textField id="outletNumberField" property="outletNumber"
+                           caption="&#1053;&#1086;&#1084;&#1077;&#1088; &#1090;&#1086;&#1088;&#1075;&#1086;&#1074;&#1086;&#1081; &#1090;&#1086;&#1095;&#1082;&#1080;"/>
+                <textField id="floorField" property="floor" caption="&#1069;&#1090;&#1072;&#1078;"/>
+                <textField id="areaField" property="area" caption="&#1055;&#1083;&#1086;&#1097;&#1072;&#1076;&#1100;"/>
+                <textField id="costField" property="cost"
+                           caption="&#1062;&#1077;&#1085;&#1072; &#1072;&#1088;&#1077;&#1085;&#1076;&#1085;&#1086;&#1081; &#1087;&#1083;&#1072;&#1090;&#1099;"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"
+                    caption="&#1055;&#1086;&#1076;&#1090;&#1074;&#1077;&#1088;&#1076;&#1080;&#1090;&#1100;"/>
+            <button id="closeBtn" action="windowClose" caption="&#1054;&#1090;&#1084;&#1077;&#1085;&#1072;"/>
+        </hbox>
+    </layout>
+</window>

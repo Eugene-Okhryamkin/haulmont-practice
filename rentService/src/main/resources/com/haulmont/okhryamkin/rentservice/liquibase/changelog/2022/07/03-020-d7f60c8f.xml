@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="rentService">
+        <createTable tableName="CONTRACT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CONTRACT"/>
+            </column>
+            <column name="CLIENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_OF_START" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_OF_END" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OUTLET_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="rentService">
+        <createTable tableName="OUTLET">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_OUTLET"/>
+            </column>
+            <column name="OUTLET_NUMBER" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FLOOR_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AREA" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COST" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="rentService">
+        <createIndex indexName="IDX_CONTRACT_CLIENT_ID" tableName="CONTRACT">
+            <column name="CLIENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="CLIENT_ID" baseTableName="CONTRACT"
+                                 constraintName="FK_CONTRACT_ON_CLIENT" referencedColumnNames="ID"
+                                 referencedTableName="CLIENT"/>
+    </changeSet>
+    <changeSet id="4" author="rentService">
+        <createIndex indexName="IDX_CONTRACT_OUTLET_ID" tableName="CONTRACT">
+            <column name="OUTLET_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="OUTLET_ID" baseTableName="CONTRACT"
+                                 constraintName="FK_CONTRACT_ON_OUTLET" referencedColumnNames="ID"
+                                 referencedTableName="OUTLET"/>
+    </changeSet>
+    <changeSet id="5" author="rentService" dbms="postgresql">
+        <createIndex indexName="IDX_UC_OUTLET_OUTLET_NUMBER" tableName="OUTLET" unique="true">
+            <column name="OUTLET_NUMBER"/>
+        </createIndex>
+
+        <modifySql>
+            <append value="where DELETED_DATE is null"/>
+        </modifySql>
+    </changeSet>
+</databaseChangeLog>
