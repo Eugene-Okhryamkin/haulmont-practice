@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "CONTRACT", indexes = {
-        @Index(name = "IDX_CONTRACT_CLIENT_ID", columnList = "CLIENT_ID"),
         @Index(name = "IDX_CONTRACT_OUTLET_ID", columnList = "OUTLET_ID")
 })
 @Entity
@@ -22,10 +21,13 @@ public class Contract {
     @Id
     private UUID id;
 
-    @JoinColumn(name = "CLIENT_ID", nullable = false)
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "CLIENT_ID")
+    @OneToOne(fetch = FetchType.LAZY)
     private Client client;
+
+    @JoinColumn(name = "OUTLET_ID")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Outlet outlet;
 
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
@@ -37,11 +39,6 @@ public class Contract {
     @Column(name = "DATE_OF_END", nullable = false)
     private Date dateOfEnd;
 
-    @JoinColumn(name = "OUTLET_ID", nullable = false)
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    private Outlet outlet;
-
     @DeletedBy
     @Column(name = "DELETED_BY")
     private String deletedBy;
@@ -50,6 +47,22 @@ public class Contract {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    public Outlet getOutlet() {
+        return outlet;
+    }
+
+    public void setOutlet(Outlet outlet) {
+        this.outlet = outlet;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 
     public void setDateOfStart(Date dateOfStart) {
         this.dateOfStart = dateOfStart;
@@ -65,22 +78,6 @@ public class Contract {
 
     public Date getDateOfEnd() {
         return dateOfEnd;
-    }
-
-    public Outlet getOutlet() {
-        return outlet;
-    }
-
-    public void setOutlet(Outlet outlet) {
-        this.outlet = outlet;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public Date getDeletedDate() {

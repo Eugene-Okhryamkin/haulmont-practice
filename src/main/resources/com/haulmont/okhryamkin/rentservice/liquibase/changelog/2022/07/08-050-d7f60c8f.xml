@@ -7,23 +7,21 @@
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="1" author="rentService">
         <addColumn tableName="OUTLET">
-            <column name="AREA" type="DOUBLE"/>
+            <column name="CONTRACT_ID" type="UUID"/>
         </addColumn>
-
-        <addNotNullConstraint columnName="AREA" defaultNullValue="0" tableName="OUTLET"/>
     </changeSet>
-    <changeSet id="2" author="rentService">
-        <addColumn tableName="OUTLET">
-            <column name="COST" type="INT"/>
-        </addColumn>
+    <changeSet id="2" author="rentService" dbms="postgresql">
+        <createIndex indexName="IDX_OUTLET_CONTRACT_ID" tableName="OUTLET" unique="true">
+            <column name="CONTRACT_ID"/>
+        </createIndex>
 
-        <addNotNullConstraint columnName="COST" defaultNullValue="0" tableName="OUTLET"/>
+        <modifySql>
+            <append value="where DELETED_DATE is null"/>
+        </modifySql>
     </changeSet>
     <changeSet id="3" author="rentService">
-        <addColumn tableName="OUTLET">
-            <column name="FLOOR_" type="INT"/>
-        </addColumn>
-
-        <addNotNullConstraint columnName="FLOOR_" defaultNullValue="0" tableName="OUTLET"/>
+        <addForeignKeyConstraint baseColumnNames="CONTRACT_ID" baseTableName="OUTLET"
+                                 constraintName="FK_OUTLET_ON_CONTRACT" referencedColumnNames="ID"
+                                 referencedTableName="CONTRACT"/>
     </changeSet>
 </databaseChangeLog>

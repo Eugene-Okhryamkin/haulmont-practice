@@ -52,6 +52,16 @@ public class Client {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "client")
+    private Contract contract;
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

@@ -1,0 +1,15 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="Outlet" name="outlet-fetch-plan" extends="_base">
+        <property name="contract" fetchPlan="_base">
+            <property name="client" fetchPlan="_base"/>
+        </property>
+    </fetchPlan>
+    <fetchPlan entity="Outlet" name="outlet-fetch-plan_1" extends="_base">
+        <property name="contract" fetchPlan="_base">
+            <property name="client" fetchPlan="_base"/>
+        </property>
+    </fetchPlan>
+    <fetchPlan entity="Contract" name="contract-fetch-plan" extends="_base">
+        <property name="outlet" fetchPlan="_base"/>
+    </fetchPlan>
+</fetchPlans>

@@ -4,10 +4,17 @@
         caption="msg://outletBrowse.caption"
         focusComponent="outletsTable">
     <data readOnly="true">
-        <collection id="outletsDc"
-                    class="com.haulmont.okhryamkin.rentservice.entity.Outlet">
-            <fetchPlan extends="_base"/>
+        <collection id="outletsDc" class="com.haulmont.okhryamkin.rentservice.entity.Outlet"
+                    fetchPlan="outlet-fetch-plan">
             <loader id="outletsDl">
+                <query>
+                    <![CDATA[select e from Outlet e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="outletsDc1" class="com.haulmont.okhryamkin.rentservice.entity.Outlet"
+                    fetchPlan="outlet-fetch-plan">
+            <loader id="outletsDl1">
                 <query>
                     <![CDATA[select e from Outlet e]]>
                 </query>
@@ -35,9 +42,9 @@
                 dataLoader="outletsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="outletsTable"
-                    width="100%"
-                    dataContainer="outletsDc">
+        <table id="outletsTable"
+               width="100%"
+               dataContainer="outletsDc">
             <actions>
                 <action id="add" type="add"/>
                 <action id="create" type="create"/>
@@ -51,6 +58,8 @@
                 <column id="floor" caption="&#1069;&#1090;&#1072;&#1078;"/>
                 <column id="area" caption="&#1055;&#1083;&#1086;&#1097;&#1072;&#1076;&#1100;"/>
                 <column id="cost" caption="&#1062;&#1077;&#1085;&#1072;"/>
+                <column id="contract.client.companyName"
+                        caption="&#1050;&#1086;&#1084;&#1087;&#1072;&#1085;&#1080;&#1103;"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -64,7 +73,7 @@
                 <button id="removeBtn" action="outletsTable.remove"
                         caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;"/>
             </buttonsPanel>
-        </groupTable>
+        </table>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="rentService">
+        <addColumn tableName="OUTLET">
+            <column name="AREA_" type="DOUBLE"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="AREA_" defaultNullValue="0" tableName="OUTLET"/>
+    </changeSet>
+    <changeSet id="2" author="rentService">
+        <dropColumn columnName="area" tableName="outlet"/>
+    </changeSet>
+    <changeSet id="3" author="rentService">
+        <dropColumn columnName="COST" tableName="OUTLET"/>
+
+        <dropColumn columnName="FLOOR_" tableName="OUTLET"/>
+    </changeSet>
+    <changeSet id="4" author="rentService">
+        <addColumn tableName="OUTLET">
+            <column name="COST" type="INT">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+            <column name="FLOOR_" type="INT">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -12,13 +12,19 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "OUTLET")
+@Table(name = "OUTLET", indexes = {
+        @Index(name = "IDX_OUTLET_CLIENT_ID", columnList = "CLIENT_ID")
+})
 @Entity
 public class Outlet {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @JoinColumn(name = "CLIENT_ID")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Client client;
 
     @InstanceName
     @Column(name = "OUTLET_NUMBER", nullable = false, unique = true)
@@ -45,6 +51,25 @@ public class Outlet {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "outlet")
+    private Contract contract;
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     public void setArea(Double area) {
         this.area = area;
