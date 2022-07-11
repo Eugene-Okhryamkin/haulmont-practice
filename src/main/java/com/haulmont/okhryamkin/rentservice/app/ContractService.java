@@ -21,6 +21,7 @@ public class ContractService {
 
     public boolean clientValidate(Contract contract) {
         List<Contract> contractList = this.dataManager.load(Contract.class).all().list();
+
         for(Contract element : contractList) {
             if(element.getDateOfStart() == contract.getDateOfStart() && element.getDateOfEnd() == element.getDateOfEnd()) {
                 return false;

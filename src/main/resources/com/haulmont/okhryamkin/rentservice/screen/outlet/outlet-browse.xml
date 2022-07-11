@@ -54,29 +54,29 @@
             </actions>
             <columns>
                 <column id="outletNumber"
-                        caption="&#1053;&#1086;&#1084;&#1077;&#1088; &#1090;&#1086;&#1088;&#1075;&#1086;&#1074;&#1086;&#1081; &#1090;&#1086;&#1095;&#1082;&#1080;"/>
-                <column id="floor" caption="&#1069;&#1090;&#1072;&#1078;"/>
-                <column id="area" caption="&#1055;&#1083;&#1086;&#1097;&#1072;&#1076;&#1100;"/>
-                <column id="cost" caption="&#1062;&#1077;&#1085;&#1072;"/>
+                        caption="msg://outletNumber.caption"/>
+                <column id="floor" caption="msg://floor.caption"/>
+                <column id="area" caption="msg://area.caption"/>
+                <column id="cost" caption="msg://cost.caption"/>
                 <column id="contract.client.companyName"
-                        caption="&#1050;&#1086;&#1084;&#1087;&#1072;&#1085;&#1080;&#1103;"/>
+                        caption="msg://contract.client.companyName.caption"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="outletsTable.create"
-                        caption="&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100; &#1090;&#1086;&#1088;&#1075;&#1086;&#1074;&#1091;&#1102; &#1090;&#1086;&#1095;&#1082;&#1091;"/>
+                        caption="msg://createBtn.caption"/>
                 <button id="editBtn" action="outletsTable.edit"
-                        caption="&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                        caption="msg://editBtn.caption"/>
                 <button id="refreshBtn" action="outletsTable.refresh"
-                        caption="&#1054;&#1073;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;"/>
+                        caption="msg://refreshBtn.caption"/>
                 <button id="removeBtn" action="outletsTable.remove"
-                        caption="&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;"/>
+                        caption="msg://removeBtn.caption"/>
             </buttonsPanel>
         </table>
         <hbox id="lookupActions" spacing="true" visible="false">
-            <button action="lookupSelectAction"/>
-            <button action="lookupCancelAction"/>
+            <button action="lookupSelectAction" caption="msg://button.caption"/>
+            <button action="lookupCancelAction" caption="msg://button1.caption"/>
         </hbox>
     </layout>
 </window>
