@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="rentService" >
+        <loadData encoding="UTF-8"
+                  file="/com/haulmont/okhryamkin/rentservice/liquibase/changelog/data/files/rentService_public_client.csv"
+                  tableName="CLIENT" separator=";">
+            <column name="ID" header="ID" type="${uuid.type}"/>
+            <column name="CREATED_BY" type="varchar(50)"/>
+            <column name="UPDATED_BY" type="varchar(50)"/>
+            <column name="DELETED_BY" type="varchar(50)"/>
+            <column name="COMPANY_NAME" type="varchar(255)"/>
+            <column name="ADDRESS" type="varchar(255)"/>
+            <column name="OWNER_NAME" type="text"/>
+            <column name="OWNER_MIDDLENAME" type="varchar(255)"/>
+            <column name="OWNER_SURNAME" type="text"/>
+            <column name="PHONE_NUMBER" type="varchar(255)"/>
+            <column name="DELETED_DATE" type="varchar(255)"/>
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="/com/haulmont/okhryamkin/rentservice/liquibase/changelog/data/files/rentService_public_client.csv"
+                  tableName="CONTRACT" separator=";">
+            <column name="ID" type="${uuid.type}"/>
+            <column name="CREATED_BY" type="varchar(50)"/>
+            <column name="UPDATED_BY" type="varchar(50)"/>
+            <column name="DELETED_BY" type="varchar(50)"/>
+            <column name="CLIENT_ID" type="uuid"/>
+            <column name="OUTLET_ID" type="uuid"/>
+            <column name="DATE_OF_START" type="timestamp" />
+            <column name="DATE_OF_END" type="timestamp" />
+            <column name="DELETED_DATE" type="varchar(255)"/>
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="/com/haulmont/okhryamkin/rentservice/liquibase/changelog/data/files/rentService_public_contract.csv"
+                  tableName="OUTLET" separator=";">
+            <column name="ID" type="${uuid.type}"/>
+            <column name="CREATED_BY" type="varchar(50)"/>
+            <column name="UPDATED_BY" type="varchar(50)"/>
+            <column name="DELETED_BY" type="varchar(50)"/>
+            <column name="CLIENT_ID" type="varchar(255)"/>
+            <column name="OUTLET_NUMBER" type="varchar(255)"/>
+            <column name="AREA_" type="varchar(255)"/>
+            <column name="COST" type="varchar(255)"/>
+            <column name="DELETED_DATE" type="varchar(255)"/>
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="/com/haulmont/okhryamkin/rentservice/liquibase/changelog/data/files/rentService_public_outlet.csv"
+                  tableName="OUTLET" separator=";">
+            <column name="ID" type="${uuid.type}"/>
+            <column name="CREATED_BY" type="varchar(50)"/>
+            <column name="UPDATED_BY" type="varchar(50)"/>
+            <column name="DELETED_BY" type="varchar(50)"/>
+            <column name="CLIENT_ID" type="varchar(255)"/>
+            <column name="OUTLET_NUMBER" type="varchar(255)"/>
+            <column name="AREA_" type="varchar(255)"/>
+            <column name="COST" type="varchar(255)"/>
+            <column name="DELETED_DATE" type="varchar(255)"/>
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                  file="/com/haulmont/okhryamkin/rentservice/liquibase/changelog/data/files/rentService_public_outlet.csv"
+                  tableName="OUTLET" separator=";">
+            <column name="ID" type="${uuid.type}"/>
+            <column name="CREATED_BY" type="varchar(50)"/>
+            <column name="UPDATED_BY" type="varchar(50)"/>
+            <column name="DELETED_BY" type="varchar(50)"/>
+            <column name="CLIENT_ID" type="varchar(255)"/>
+            <column name="OUTLET_NUMBER" type="varchar(255)"/>
+            <column name="AREA_" type="varchar(255)"/>
+            <column name="COST" type="varchar(255)"/>
+            <column name="DELETED_DATE" type="varchar(255)"/>
+        </loadData>
+
+    </changeSet>
+</databaseChangeLog>
