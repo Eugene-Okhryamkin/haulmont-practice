@@ -48,22 +48,6 @@ public class Contract {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    public Outlet getOutlet() {
-        return outlet;
-    }
-
-    public void setOutlet(Outlet outlet) {
-        this.outlet = outlet;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
     public void setDateOfStart(Date dateOfStart) {
         this.dateOfStart = dateOfStart;
     }
@@ -78,6 +62,22 @@ public class Contract {
 
     public Date getDateOfEnd() {
         return dateOfEnd;
+    }
+
+    public Outlet getOutlet() {
+        return outlet;
+    }
+
+    public void setOutlet(Outlet outlet) {
+        this.outlet = outlet;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Client getClient() {
+        return client;
     }
 
     public Date getDeletedDate() {

@@ -1,6 +1,7 @@
 package com.haulmont.okhryamkin.rentservice.screen.contract;
 
 import com.haulmont.okhryamkin.rentservice.app.ContractService;
+import io.jmix.core.Messages;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.NotificationFacet;
@@ -19,6 +20,9 @@ public class ContractEdit extends StandardEditor<Contract> {
     private ContractService contractService;
 
     @Autowired
+    private Messages messages;
+
+    @Autowired
     private Notifications notifications;
 
     @Autowired
@@ -27,7 +31,7 @@ public class ContractEdit extends StandardEditor<Contract> {
     @Subscribe
     public void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
         if(!contractService.clientValidate(getEditedEntity())) {
-            showNotification("invalidContract", "Client already exists");
+            showNotification(messages.getMessage("com.haulmont.okhryamkin.rentservice.screen.contract/invalidContract"), messages.getMessage("com.haulmont.okhryamkin.rentservice.screen.contract/invalidContractDescription"));
             event.preventCommit();
         }
     }

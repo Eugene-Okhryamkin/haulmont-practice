@@ -1,2 +1,3 @@
-24f04c89-c9ae-9fcf-8881-fbbd98654b31,Ашан,ул.Лесная 1,Федор,Александрович,Сидоров,4321432134123,,
-f358470e-93d0-1b1e-2081-ebef03fef839,rfdsgdsfg,asdfasdfasdf,dsfasdfasd,fdsafasdfs,dafasdfsadf,dsafasdfasdf,,
+id,company_name,address,owner_name,owner_middlename,owner_surname,phone_number,deleted_by,deleted_date
+cee8a31d-e6ec-b790-0638-873c56d83898,Гитарный Клуб,ул.Тверская д.1,Джимми,-,Хендрикс,81231231231,,
+1f8c55b2-0a83-3f1d-d0ea-b621e92f0db4,Ашан,ул.Лесная д.5,Феликс,Эдмундович,Дзержинский,88002223232,,
